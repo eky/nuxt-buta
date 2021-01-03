@@ -6,7 +6,7 @@
         <vuetify-logo />
       </div>
       <div class="text-center">
-        <do-a-barrel-roll duration="2s">😺</do-a-barrel-roll>
+        <do-a-barrel-roll duration="2s" :size="80">😺</do-a-barrel-roll>
         <do-a-barrel-roll duration="1s">🐷</do-a-barrel-roll>
       </div>
       <v-card>

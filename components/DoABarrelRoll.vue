@@ -1,5 +1,11 @@
 <template>
-  <span ref="slot" role="presentation" class="🔄" :style="cssVars">
+  <span
+    ref="slot"
+    role="presentation"
+    class="🔄"
+    :style="cssVars"
+    @click="clicked"
+  >
     <slot></slot>
   </span>
 </template>
@@ -7,9 +13,12 @@
 <style scoped>
 .🔄 {
   display: inline-block;
-  font-size: var(--size);
+  font-size: var(--font-size);
+  cursor: pointer;
+  user-select: none;
   transform: rotateZ(-360deg);
   animation: do-a-barrel-roll var(--duration) linear forwards infinite;
+  animation-play-state: var(--animation-play-state);
 }
 
 @keyframes do-a-barrel-roll {
@@ -20,34 +29,53 @@
 </style>
 
 <script>
-export default {
-  name: 'DoABarrelRoll',
-  props: {
-    duration: {
-      type: String,
-      default: '1s',
-    },
-    size: {
-      type: String,
-      default: '120px',
-    },
+const props = {
+  duration: {
+    type: String,
+    default: '1s',
   },
-  data() {
+  size: {
+    type: Number,
+    default: 120,
+  },
+}
+
+const data = () => ({
+  isAnimationPlaying: false,
+})
+
+const computed = {
+  cssVars() {
+    const { size, isAnimationPlaying } = this
+    const fontSize = size * 0.7
     return {
-      codeContent: '',
+      '--duration': this.duration,
+      '--font-size': `${fontSize}px`,
+      '--animation-play-state': isAnimationPlaying ? 'paused' : 'running',
     }
   },
-  computed: {
-    cssVars() {
-      return {
-        '--duration': this.duration,
-        '--size': this.size,
-      }
-    },
+}
+
+const methods = {
+  clicked(event) {
+    console.log(
+      `${this.$refs.slot.textContent} clicked! ${
+        this.isAnimationPlaying ? 'stop' : 'resume'
+      }`
+    )
+    this.isAnimationPlaying = !this.isAnimationPlaying
   },
+}
+
+export default {
+  name: 'DoABarrelRoll',
+  props,
+  data,
+  computed,
   mounted() {
     const { duration, size } = this
     console.log({ duration, size }, this)
   },
+  methods,
 }
 </script>
