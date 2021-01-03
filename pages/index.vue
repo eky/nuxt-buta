@@ -3,7 +3,6 @@
     <v-col cols="12" sm="8" md="6">
       <div class="text-center">
         <logo />
-        <vuetify-logo />
       </div>
       <div class="text-center">
         <do-a-barrel-roll duration="2s" :size="80">😺</do-a-barrel-roll>
@@ -86,13 +85,11 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import DoABarrelRoll from '~/components/DoABarrelRoll.vue'
 
 export default {
   components: {
     Logo,
-    VuetifyLogo,
     DoABarrelRoll,
   },
 }
