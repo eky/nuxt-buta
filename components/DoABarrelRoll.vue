@@ -58,12 +58,12 @@ const computed = {
 
 const methods = {
   clicked(event) {
+    this.isAnimationPlaying = !this.isAnimationPlaying
     console.log(
       `${this.$refs.slot.textContent} clicked! ${
         this.isAnimationPlaying ? 'stop' : 'resume'
       }`
     )
-    this.isAnimationPlaying = !this.isAnimationPlaying
   },
 }
 
@@ -74,7 +74,7 @@ export default {
   computed,
   mounted() {
     const { duration, size } = this
-    console.log({ duration, size }, this)
+    console.log(this.$refs.slot.textContent, { duration, size })
   },
   methods,
 }
