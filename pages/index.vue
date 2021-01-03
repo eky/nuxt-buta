@@ -5,6 +5,10 @@
         <logo />
         <vuetify-logo />
       </div>
+      <div class="text-center">
+        <do-a-barrel-roll duration="2s">😺</do-a-barrel-roll>
+        <do-a-barrel-roll duration="1s">🐷</do-a-barrel-roll>
+      </div>
       <v-card>
         <v-card-title class="headline">
           🐷 Welcome to the Vuetify + Nuxt.js template 👍
@@ -83,11 +87,13 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import DoABarrelRoll from '~/components/DoABarrelRoll.vue'
 
 export default {
   components: {
     Logo,
     VuetifyLogo,
+    DoABarrelRoll,
   },
 }
 </script>
